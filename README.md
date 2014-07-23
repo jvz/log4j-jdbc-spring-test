@@ -16,9 +16,10 @@ Run the following commands in MySQL:
       PRIMARY KEY (`entry_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-Then you can run the following command to test the JDBC appender:
+Then you can run the following commands to test the JDBC appender:
 
-    mvn spring-boot:run
+    mvn clean package
+    java -jar target/log4j-jdbc-spring-1.0-SNAPSHOT.jar
 
 Note that you should build the latest Log4j 2 trunk to really test this. The
 point of this demo is to test the SQL batch statement support recently added
