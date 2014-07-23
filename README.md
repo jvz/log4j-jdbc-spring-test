@@ -19,3 +19,7 @@ Run the following commands in MySQL:
 Then you can run the following command to test the JDBC appender:
 
     mvn spring-boot:run
+
+Note that you should build the latest Log4j 2 trunk to really test this. The
+point of this demo is to test the SQL batch statement support recently added
+in the trunk. An older version wouldn't be using batch inserts in this demo.
