@@ -1,7 +1,7 @@
 <Configuration status="DEBUG">
   <Appenders>
     <Jdbc name="mysql" tableName="log_entries" ignoreExceptions="false" bufferSize="500">
-      <DataSource jndiName="java:comp/env/jdbc/log4j"/>
+      <ConnectionFactory class="org.mjunx.DataSourceFactory" method="create"/>
       <Column name="entry_id" pattern="%u{TIME}"/>
       <Column name="level_name" pattern="%level"/>
       <Column name="marker_name" pattern="%marker"/>

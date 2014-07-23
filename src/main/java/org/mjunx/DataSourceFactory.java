@@ -16,20 +16,19 @@
  */
 package org.mjunx;
 
-import java.util.Hashtable;
-import javax.naming.Context;
-import javax.naming.NamingException;
-import javax.naming.spi.InitialContextFactory;
+import javax.sql.DataSource;
+
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 /**
  *
  */
-public class DataSourceContextFactory implements InitialContextFactory {
-
-    private static final Context CONTEXT = new DataSourceContext();
-
-    @Override
-    public Context getInitialContext(Hashtable<?, ?> environment) throws NamingException {
-        return CONTEXT;
+public class DataSourceFactory {
+    public static DataSource create() {
+        final MysqlDataSource ds = new MysqlDataSource();
+        ds.setUrl("jdbc:mysql://localhost/log4j");
+        ds.setUser("log4j");
+        ds.setPassword("log4j");
+        return ds;
     }
 }

@@ -36,26 +36,6 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 public class Main {
     public static void main(final String... args) throws Exception {
-        setUpJndi();
-        setUpDataSource();
         SpringApplication.run(Main.class, args);
-    }
-
-    private static void setUpJndi() {
-        System.setProperty(Context.INITIAL_CONTEXT_FACTORY, DataSourceContextFactory.class.getName());
-        System.setProperty(Context.PROVIDER_URL, "file:///tmp");
-    }
-
-    private static void setUpDataSource() throws SQLException, NamingException {
-        final Context ctx = new InitialContext();
-        ctx.bind("java:comp/env/jdbc/log4j", createDataSource());
-    }
-
-    private static DataSource createDataSource() {
-        final MysqlDataSource ds = new MysqlDataSource();
-        ds.setUrl("jdbc:mysql://localhost/log4j");
-        ds.setUser("log4j");
-        ds.setPassword("log4j");
-        return ds;
     }
 }
