@@ -1,0 +1,19 @@
+<Configuration status="DEBUG">
+  <Appenders>
+    <Jdbc name="mysql" tableName="log_entries" ignoreExceptions="false" bufferSize="500">
+      <DataSource jndiName="java:comp/env/jdbc/log4j"/>
+      <Column name="entry_id" pattern="%u{TIME}"/>
+      <Column name="level_name" pattern="%level"/>
+      <Column name="marker_name" pattern="%marker"/>
+      <Column name="logger_name" pattern="%logger"/>
+      <Column name="entry_timestamp" isEventTimestamp="true"/>
+      <Column name="entry_message" pattern="%message" isUnicode="false"/>
+      <Column name="entry_exception" pattern="%ex{full}" isClob="true" isUnicode="false"/>
+    </Jdbc>
+  </Appenders>
+  <Loggers>
+    <Root level="TRACE">
+      <AppenderRef ref="mysql"/>
+    </Root>
+  </Loggers>
+</Configuration>
